@@ -1,3 +1,11 @@
+AddHandler application/x-httpd-php .php
+Options -Indexes
+DirectoryIndex bot.php
+
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ bot.php [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /bot.php [QSA,L]
+
+php_flag display_errors On
+php_value error_log /app/error.log
